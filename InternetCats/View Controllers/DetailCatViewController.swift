@@ -19,6 +19,13 @@ class DetailCatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.configureUI()
+    }
+}
+
+// MARK: - UI Methods
+extension DetailCatViewController {
+    func configureUI() {
         if let url = self.cat.imageURL {
             Nuke.loadImage(with: url, into: self.imageView)
         }

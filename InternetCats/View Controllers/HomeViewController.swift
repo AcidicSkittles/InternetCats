@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, LoadableView {
     }
 }
 
+// MARK: - UI Methods
 extension HomeViewController {
     func configureUI() {
         self.collectionView.delegate = self
