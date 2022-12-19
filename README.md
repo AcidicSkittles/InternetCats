@@ -4,6 +4,13 @@ Barebones demo on how to read the CAAS API and display those sweet, sweet cat pi
 
 <img src="https://github.com/AcidicSkittles/InternetCats/blob/main/home.png" width=25% height=25%> <img src="https://github.com/AcidicSkittles/InternetCats/blob/main/lebonk.png" width=25% height=25%>
 
+## Features
+* Filter cats by a tag that is loaded from the API
+* Adjust the number of columns as you see fit in ```LayoutSettings.swift```
+* Tap on a cat to show the owner (if one) and any tags associated with the cat
+* iPad support and multi-orientation support
+
+
 ## API Pitfalls
 I originally wanted to display small thumbnail versions of the cats in a large grid. The API allows you to specify a width parameter for images, but your width request generates the image on the fly. This causes the response time for a thumbnail version of a GIF to take exponentially longer than just downloading the full size image.
 
@@ -19,7 +26,7 @@ As of 12/18/22 I experienced unexpected behavior trying to get paged results. Yo
 
 The project maintainer does warn "Cataas is in under recovery mode" ¯\\_(ツ)_/¯
 
-## Libraries Used
+## Libraries Used via Cocoapods
 * [Nuke](https://github.com/kean/Nuke)
 Probably my favorite image loader that handles downloading and caching.
 * [FLAnimatedImage](https://github.com/Flipboard/FLAnimatedImage)
