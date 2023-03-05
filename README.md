@@ -1,6 +1,6 @@
 # InternetCats
 
-Barebones demo on how to read the [CATAAS (Cats As A Servvice) API](https://cataas.com/) and display those sweet, sweet cat pics. Note: the API regularly goes down, so if it does not load, then this demo app will not work as intended.
+Barebones demo on how to read the [CATAAS (Cats As A Service) API](https://cataas.com/) and display those sweet, sweet cat pics. Note: the API regularly goes down, so if it does not load, then this demo app will not work as intended.
 
 <img src="https://github.com/AcidicSkittles/InternetCats/blob/main/home.png" width=25% height=25%> <img src="https://github.com/AcidicSkittles/InternetCats/blob/main/lebonk.png" width=25% height=25%>
 
