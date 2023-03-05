@@ -7,23 +7,24 @@
 
 import UIKit
 import FLAnimatedImage
-import Nuke
-import NukeFLAnimatedImagePlugin
 
 class CatCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: FLAnimatedImageView!
+    var viewModel: CatCollectionViewModel!
     
-    func setup(_ model: Cat) {
-        if let url = model.imageURL {
-            Nuke.loadImage(with: url, into: self.imageView)
+    func configure(withViewModel viewModel: CatCollectionViewModel) {
+        self.viewModel = viewModel
+        
+        if let url = viewModel.cat.imageURL {
+            self.imageView.loadImage(url: url)
         }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        Nuke.cancelRequest(for: self.imageView)
+        self.imageView.cancelImageLoading()
         self.imageView.animatedImage = nil
         self.imageView.image = nil
     }

@@ -13,8 +13,7 @@ class DetailCatViewController: UIViewController {
 
     @IBOutlet weak var imageView: FLAnimatedImageView!
     @IBOutlet weak var tagLabel: UILabel!
-    // cat to display details
-    var cat: Cat!
+    var viewModel: DetailCatViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,23 +25,11 @@ class DetailCatViewController: UIViewController {
 // MARK: - UI Methods
 extension DetailCatViewController {
     func configureUI() {
-        if let url = self.cat.imageURL {
-            Nuke.loadImage(with: url, into: self.imageView)
+        if let url = self.viewModel.cat.imageURL {
+            self.imageView.loadImage(url: url)
         }
         
-        if let owner = self.cat.owner, owner != "null" {
-            self.navigationItem.title = "\(owner)'s Cat"
-        }
-        
-        var tagLabelText = ""
-        for tag in self.cat.tags {
-            if tag == self.cat.tags.first {
-                tagLabelText = "Tag list: \(tag)"
-            } else {
-                tagLabelText = tagLabelText + ", \(tag)"
-            }
-        }
-        
-        self.tagLabel.text = tagLabelText
+        self.navigationItem.title = self.viewModel.navigationTitle
+        self.tagLabel.text = self.viewModel.tagLabelText
     }
 }

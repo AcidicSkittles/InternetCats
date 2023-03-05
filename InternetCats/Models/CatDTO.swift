@@ -1,21 +1,18 @@
 //
-//  Cat.swift
+//  CatDTO.swift
 //  InternetCats
 //
-//  Created by Derek Buchanan on 12/18/22.
+//  Created by Derek Buchanan on 2/28/23.
 //
 
 import Foundation
 
-struct Cat: Codable {
+
+/// Data Transfer Object that represents API response.
+struct CatDTO: Codable {
     let id: String
     let tags: [String]
     let owner: String?
-    var imageURL: URL? {
-        get {
-            return CatService.shared.catImageURL(catId: self.id)
-        }
-    }
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"

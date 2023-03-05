@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		4980BC929192BAD7E9B0EBF5 /* Pods_InternetCats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659EC16C011FBDFE8E05DC36 /* Pods_InternetCats.framework */; };
 		654AE94C294FAF3300A17D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE94B294FAF3300A17D26 /* AppDelegate.swift */; };
-		654AE94E294FAF3300A17D26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE94D294FAF3300A17D26 /* SceneDelegate.swift */; };
 		654AE950294FAF3300A17D26 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE94F294FAF3300A17D26 /* HomeViewController.swift */; };
 		654AE953294FAF3300A17D26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 654AE951294FAF3300A17D26 /* Main.storyboard */; };
 		654AE955294FAF3400A17D26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 654AE954294FAF3400A17D26 /* Assets.xcassets */; };
 		654AE958294FAF3400A17D26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 654AE956294FAF3400A17D26 /* LaunchScreen.storyboard */; };
-		654AE960294FBE0500A17D26 /* CatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE95F294FBE0500A17D26 /* CatService.swift */; };
+		654AE960294FBE0500A17D26 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE95F294FBE0500A17D26 /* NetworkService.swift */; };
 		654AE963294FBF0500A17D26 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE962294FBF0500A17D26 /* Cat.swift */; };
 		654AE966294FC1CE00A17D26 /* CatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE965294FC1CE00A17D26 /* CatCollectionViewCell.swift */; };
 		654AE969294FC55D00A17D26 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654AE968294FC55D00A17D26 /* LoadingView.xib */; };
@@ -23,21 +22,31 @@
 		654AE970294FC90200A17D26 /* LayoutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE96F294FC90200A17D26 /* LayoutSettings.swift */; };
 		654AE973294FCB8F00A17D26 /* UIVIewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE972294FCB8F00A17D26 /* UIVIewController+extensions.swift */; };
 		654AE975294FCD6A00A17D26 /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE974294FCD6A00A17D26 /* UIView+extensions.swift */; };
-		654AE978294FD0C700A17D26 /* CatDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE977294FD0C700A17D26 /* CatDataRepository.swift */; };
 		654AE97B294FF24600A17D26 /* DetailCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AE97A294FF24600A17D26 /* DetailCatViewController.swift */; };
+		65D1CFF929AEB4A2006D760E /* CatCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1CFF829AEB4A2006D760E /* CatCollectionViewModel.swift */; };
+		65D1CFFB29AEBA69006D760E /* NetworkServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1CFFA29AEBA69006D760E /* NetworkServiceType.swift */; };
+		65D1CFFE29AEBABC006D760E /* CatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1CFFD29AEBABC006D760E /* CatService.swift */; };
+		65D1D00029AEBC38006D760E /* CatServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1CFFF29AEBC38006D760E /* CatServiceType.swift */; };
+		65D1D00429AEBE01006D760E /* CatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1D00329AEBE01006D760E /* CatDTO.swift */; };
+		65D1D00629AEBEB5006D760E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1D00529AEBEB5006D760E /* HomeViewModel.swift */; };
+		65D1D00829AEBEC5006D760E /* DetailCatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1D00729AEBEC5006D760E /* DetailCatViewModel.swift */; };
+		65D1D00B29AEC590006D760E /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1D00A29AEC590006D760E /* ErrorMessage.swift */; };
+		65D1D00D29AEC827006D760E /* CatEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1D00C29AEC827006D760E /* CatEndPoint.swift */; };
+		65D1D00F29AED80F006D760E /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1D00E29AED80F006D760E /* ServiceContainer.swift */; };
+		65F7972C29B3F22800463D99 /* FLAnimatedImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F7972B29B3F22800463D99 /* FLAnimatedImage+extensions.swift */; };
+		65F7972E29B3F9F400463D99 /* ImageLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F7972D29B3F9F400463D99 /* ImageLoadable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		633E839C34EC0A2C6DC82508 /* Pods-InternetCats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InternetCats.release.xcconfig"; path = "Target Support Files/Pods-InternetCats/Pods-InternetCats.release.xcconfig"; sourceTree = "<group>"; };
 		654AE948294FAF3300A17D26 /* InternetCats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InternetCats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		654AE94B294FAF3300A17D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		654AE94D294FAF3300A17D26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		654AE94F294FAF3300A17D26 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		654AE952294FAF3300A17D26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		654AE954294FAF3400A17D26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		654AE957294FAF3400A17D26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		654AE959294FAF3400A17D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		654AE95F294FBE0500A17D26 /* CatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatService.swift; sourceTree = "<group>"; };
+		654AE95F294FBE0500A17D26 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		654AE962294FBF0500A17D26 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		654AE965294FC1CE00A17D26 /* CatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionViewCell.swift; sourceTree = "<group>"; };
 		654AE968294FC55D00A17D26 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
@@ -46,9 +55,20 @@
 		654AE96F294FC90200A17D26 /* LayoutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSettings.swift; sourceTree = "<group>"; };
 		654AE972294FCB8F00A17D26 /* UIVIewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+extensions.swift"; sourceTree = "<group>"; };
 		654AE974294FCD6A00A17D26 /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
-		654AE977294FD0C700A17D26 /* CatDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDataRepository.swift; sourceTree = "<group>"; };
 		654AE97A294FF24600A17D26 /* DetailCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCatViewController.swift; sourceTree = "<group>"; };
 		659EC16C011FBDFE8E05DC36 /* Pods_InternetCats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InternetCats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65D1CFF829AEB4A2006D760E /* CatCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionViewModel.swift; sourceTree = "<group>"; };
+		65D1CFFA29AEBA69006D760E /* NetworkServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceType.swift; sourceTree = "<group>"; };
+		65D1CFFD29AEBABC006D760E /* CatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatService.swift; sourceTree = "<group>"; };
+		65D1CFFF29AEBC38006D760E /* CatServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatServiceType.swift; sourceTree = "<group>"; };
+		65D1D00329AEBE01006D760E /* CatDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDTO.swift; sourceTree = "<group>"; };
+		65D1D00529AEBEB5006D760E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		65D1D00729AEBEC5006D760E /* DetailCatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCatViewModel.swift; sourceTree = "<group>"; };
+		65D1D00A29AEC590006D760E /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		65D1D00C29AEC827006D760E /* CatEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatEndPoint.swift; sourceTree = "<group>"; };
+		65D1D00E29AED80F006D760E /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
+		65F7972B29B3F22800463D99 /* FLAnimatedImage+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FLAnimatedImage+extensions.swift"; sourceTree = "<group>"; };
+		65F7972D29B3F9F400463D99 /* ImageLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadable.swift; sourceTree = "<group>"; };
 		EBC320162DC6A3A1724D927E /* Pods-InternetCats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InternetCats.debug.xcconfig"; path = "Target Support Files/Pods-InternetCats/Pods-InternetCats.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,15 +113,15 @@
 		654AE94A294FAF3300A17D26 /* InternetCats */ = {
 			isa = PBXGroup;
 			children = (
+				65D1CFFC29AEBA70006D760E /* Protocols */,
 				654AE961294FBE0B00A17D26 /* Data Service */,
-				654AE979294FD0CC00A17D26 /* Data Repository */,
 				654AE976294FCD7B00A17D26 /* Extensions */,
 				654AE971294FC90F00A17D26 /* Helpers */,
-				654AE967294FC1D200A17D26 /* View */,
-				654AE964294FBF2400A17D26 /* Model */,
-				654AE94B294FAF3300A17D26 /* AppDelegate.swift */,
-				654AE94D294FAF3300A17D26 /* SceneDelegate.swift */,
+				654AE967294FC1D200A17D26 /* Views */,
+				654AE964294FBF2400A17D26 /* Models */,
+				65D1D00929AEBECC006D760E /* View Models */,
 				654AE97C294FF24E00A17D26 /* View Controllers */,
+				654AE94B294FAF3300A17D26 /* AppDelegate.swift */,
 				654AE951294FAF3300A17D26 /* Main.storyboard */,
 				654AE96C294FC73C00A17D26 /* Images */,
 				654AE956294FAF3400A17D26 /* LaunchScreen.storyboard */,
@@ -113,27 +133,32 @@
 		654AE961294FBE0B00A17D26 /* Data Service */ = {
 			isa = PBXGroup;
 			children = (
-				654AE95F294FBE0500A17D26 /* CatService.swift */,
+				65D1D00E29AED80F006D760E /* ServiceContainer.swift */,
+				65D1CFFD29AEBABC006D760E /* CatService.swift */,
+				654AE95F294FBE0500A17D26 /* NetworkService.swift */,
 			);
 			path = "Data Service";
 			sourceTree = "<group>";
 		};
-		654AE964294FBF2400A17D26 /* Model */ = {
+		654AE964294FBF2400A17D26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				654AE962294FBF0500A17D26 /* Cat.swift */,
+				65D1D00329AEBE01006D760E /* CatDTO.swift */,
+				65D1D00A29AEC590006D760E /* ErrorMessage.swift */,
+				65D1D00C29AEC827006D760E /* CatEndPoint.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		654AE967294FC1D200A17D26 /* View */ = {
+		654AE967294FC1D200A17D26 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				654AE965294FC1CE00A17D26 /* CatCollectionViewCell.swift */,
 				654AE968294FC55D00A17D26 /* LoadingView.xib */,
 				654AE96A294FC56F00A17D26 /* LoadingView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		654AE96C294FC73C00A17D26 /* Images */ = {
@@ -158,16 +183,9 @@
 			children = (
 				654AE972294FCB8F00A17D26 /* UIVIewController+extensions.swift */,
 				654AE974294FCD6A00A17D26 /* UIView+extensions.swift */,
+				65F7972B29B3F22800463D99 /* FLAnimatedImage+extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		654AE979294FD0CC00A17D26 /* Data Repository */ = {
-			isa = PBXGroup;
-			children = (
-				654AE977294FD0C700A17D26 /* CatDataRepository.swift */,
-			);
-			path = "Data Repository";
 			sourceTree = "<group>";
 		};
 		654AE97C294FF24E00A17D26 /* View Controllers */ = {
@@ -177,6 +195,26 @@
 				654AE97A294FF24600A17D26 /* DetailCatViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		65D1CFFC29AEBA70006D760E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				65D1CFFF29AEBC38006D760E /* CatServiceType.swift */,
+				65D1CFFA29AEBA69006D760E /* NetworkServiceType.swift */,
+				65F7972D29B3F9F400463D99 /* ImageLoadable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		65D1D00929AEBECC006D760E /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				65D1D00529AEBEB5006D760E /* HomeViewModel.swift */,
+				65D1CFF829AEB4A2006D760E /* CatCollectionViewModel.swift */,
+				65D1D00729AEBEC5006D760E /* DetailCatViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		BC7BA1952101504F31CF41D9 /* Pods */ = {
@@ -305,18 +343,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				654AE960294FBE0500A17D26 /* CatService.swift in Sources */,
+				654AE960294FBE0500A17D26 /* NetworkService.swift in Sources */,
 				654AE950294FAF3300A17D26 /* HomeViewController.swift in Sources */,
 				654AE973294FCB8F00A17D26 /* UIVIewController+extensions.swift in Sources */,
+				65D1CFF929AEB4A2006D760E /* CatCollectionViewModel.swift in Sources */,
+				65D1CFFB29AEBA69006D760E /* NetworkServiceType.swift in Sources */,
 				654AE963294FBF0500A17D26 /* Cat.swift in Sources */,
 				654AE966294FC1CE00A17D26 /* CatCollectionViewCell.swift in Sources */,
 				654AE94C294FAF3300A17D26 /* AppDelegate.swift in Sources */,
+				65D1D00429AEBE01006D760E /* CatDTO.swift in Sources */,
 				654AE97B294FF24600A17D26 /* DetailCatViewController.swift in Sources */,
+				65D1D00629AEBEB5006D760E /* HomeViewModel.swift in Sources */,
+				65D1D00F29AED80F006D760E /* ServiceContainer.swift in Sources */,
+				65D1D00829AEBEC5006D760E /* DetailCatViewModel.swift in Sources */,
+				65D1D00B29AEC590006D760E /* ErrorMessage.swift in Sources */,
+				65F7972E29B3F9F400463D99 /* ImageLoadable.swift in Sources */,
+				65D1CFFE29AEBABC006D760E /* CatService.swift in Sources */,
+				65D1D00029AEBC38006D760E /* CatServiceType.swift in Sources */,
+				65D1D00D29AEC827006D760E /* CatEndPoint.swift in Sources */,
 				654AE975294FCD6A00A17D26 /* UIView+extensions.swift in Sources */,
 				654AE96B294FC56F00A17D26 /* LoadingView.swift in Sources */,
+				65F7972C29B3F22800463D99 /* FLAnimatedImage+extensions.swift in Sources */,
 				654AE970294FC90200A17D26 /* LayoutSettings.swift in Sources */,
-				654AE94E294FAF3300A17D26 /* SceneDelegate.swift in Sources */,
-				654AE978294FD0C700A17D26 /* CatDataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +517,6 @@
 				INFOPLIST_FILE = InternetCats/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,7 +544,6 @@
 				INFOPLIST_FILE = InternetCats/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

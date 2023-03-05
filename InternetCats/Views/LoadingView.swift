@@ -25,7 +25,7 @@ public class LoadingView: UIView {
         didSet {
             let path = Bundle.main.url(forResource: "poptart_cat", withExtension: "gif")!
             let data = try! Data(contentsOf: path)
-            self.imageView.animatedImage = FLAnimatedImage.init(gifData: data)
+            self.imageView.animatedImage = FLAnimatedImage(gifData: data)
         }
     }
     

@@ -1,6 +1,6 @@
 PODS:
   - FLAnimatedImage (1.0.17)
-  - IQKeyboardManager (6.5.10)
+  - IQKeyboardManager (6.5.11)
   - Nuke (9.5.0)
   - Nuke-FLAnimatedImage-Plugin (7.1.0):
     - FLAnimatedImage (~> 1.0)
@@ -21,7 +21,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
-  IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
+  IQKeyboardManager: ef43ce1ba1e5aaf4adf222c0a46f39761f246879
   Nuke: 6f400a4ea957e09149ec335a3c6acdcc814d89e4
   Nuke-FLAnimatedImage-Plugin: d4e97ea8c34d101c3b63f7cc44359acd5022cfe8
 

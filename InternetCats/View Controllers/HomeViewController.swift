@@ -6,21 +6,23 @@
 //
 
 import UIKit
+import Combine
 
 class HomeViewController: UIViewController, LoadableView {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tagTextField: UITextField!
+    var viewModel: HomeViewModel!
     var loadingView: LoadingView = UIView.fromNib()
-    var catRepository: CatDataRepository = CatDataRepository()
+    var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureUI()
         self.setupLoadingView()
-        self.loadTagList()
-        self.refresh()
+        self.setupBindings()
+        self.loadTagListThenFirstPage()
     }
 }
 
@@ -36,40 +38,38 @@ extension HomeViewController {
         }
     }
     
-    func refresh() {
-        self.loadingView.isHidden = false
-        self.catRepository.loadFirstPage() { error in
-            DispatchQueue.main.async {
-                if !self.catRepository.isLoadingImages && !self.catRepository.isLoadingTags {
+    func setupBindings() {
+        self.cancellables.forEach { $0.cancel() }
+        self.cancellables.removeAll()
+        
+        self.viewModel.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] state in
+                switch(state) {
+                case .loading:
+                    self.loadingView.isHidden = false
+                case .finishedLoadingSuccessfully:
                     self.loadingView.isHidden = true
+                    self.collectionView.reloadData()
+                case .errorFetchingTags(let error):
+                    self.loadingView.isHidden = true
+                    self.show(alert: "Tags could not load: " + error.localizedDescription)
+                case .errorFetchingCats(let error):
+                    self.loadingView.isHidden = true
+                    self.show(alert: "Cats could not load: " + error.localizedDescription)
+                default:
+                    break
                 }
-                
-                if let error {
-                    self.show(alert: "Images could not load: " + error.localizedDescription)
-                    return
-                }
-                
-                self.collectionView.reloadData()
             }
-        }
+            .store(in: &cancellables)
     }
     
-    func loadTagList() {
-        self.loadingView.isHidden = false
-        self.catRepository.loadTagList() { error in
-            DispatchQueue.main.async {
-                if !self.catRepository.isLoadingImages && !self.catRepository.isLoadingTags {
-                    self.loadingView.isHidden = true
-                }
-                
-                if let error {
-                    self.show(alert: "Tag list could not load: " + error.localizedDescription)
-                    return
-                }
-                
-                self.configureTagPicker()
-            }
-        }
+    func refreshFirstPage() {
+        self.viewModel.loadFirstPage()
+    }
+    
+    func loadTagListThenFirstPage() {
+        self.viewModel.loadTagListThenFirstPage()
     }
     
     func configureTagPicker() {
@@ -84,27 +84,21 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.catRepository.cats.count
+        return self.viewModel.cats.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatCollectionViewCell", for: indexPath) as! CatCollectionViewCell
-        cell.setup(self.catRepository.cats[indexPath.item])
+        
+        let cat = self.viewModel.cats[indexPath.item]
+        let viewModel = CatCollectionViewModel(cat: cat)
+        cell.configure(withViewModel: viewModel)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if self.shouldLoadNextPage(indexPath.item) {
-            self.catRepository.loadNextPage { error in
-                DispatchQueue.main.async {
-                    if let error {
-                        self.show(alert: error.localizedDescription)
-                        return
-                    }
-                    
-                    self.collectionView.reloadData()
-                }
-            }
+            self.viewModel.loadNextPage()
         }
     }
     
@@ -114,9 +108,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let selectedCat = self.catRepository.cats[indexPath.item]
+        let selectedCat = self.viewModel.cats[indexPath.item]
         let detailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DetailCatViewController") as! DetailCatViewController
-        detailViewController.cat = selectedCat
+        detailViewController.viewModel = DetailCatViewModel(cat: selectedCat)
         
         let nav = UINavigationController(rootViewController: detailViewController)
         self.present(nav, animated: true)
@@ -124,8 +118,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     private func shouldLoadNextPage(_ currentItemIndex: Int) -> Bool {
         let loadOffsetRows = 2
-        let catCount = self.catRepository.cats.count
-        if !self.catRepository.isLoadingImages && currentItemIndex > (catCount - (LayoutSettings.itemsPerRow * loadOffsetRows)) {
+        let catCount = self.viewModel.cats.count
+        if self.viewModel.state.case != .loading && currentItemIndex > (catCount - (LayoutSettings.itemsPerRow * loadOffsetRows)) {
             return true
         } else {
             return false
@@ -162,22 +156,22 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.catRepository.tags.count
+        return self.viewModel.tags.count
     }
 
     func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.catRepository.tags[row]
+        return self.viewModel.tags[row]
     }
 
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.tagTextField.text = self.catRepository.tags[row]
+        self.tagTextField.text = self.viewModel.tags[row]
     }
 }
 
 // MARK: - UITextFieldDelegate
 extension HomeViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.catRepository.tag = self.tagTextField.text
-        self.refresh()
+        self.viewModel.selectedTag = self.tagTextField.text
+        self.refreshFirstPage()
     }
 }
