@@ -1,8 +1,14 @@
 # InternetCats
 
-Barebones demo on how to read the CAAS API and display those sweet, sweet cat pics.
+Barebones demo on how to read the [CATAAS (Cats As A Servvice) API](https://cataas.com/) and display those sweet, sweet cat pics. Note: the API regularly goes down, so if it does not load, then this demo app will not work as intended.
 
 <img src="https://github.com/AcidicSkittles/InternetCats/blob/main/home.png" width=25% height=25%> <img src="https://github.com/AcidicSkittles/InternetCats/blob/main/lebonk.png" width=25% height=25%>
+
+## Architecture
+* MVVM design pattern to separate business logic into testable view models. This allows us to dependency inject whatever behavior we desire into our business logic for testability. Want to create a mock network call for a unit test? No problem. Implement the ```NetworkServiceType``` protocol and mock away.
+* Combine framework for easy binding and communication from view controller to view model.
+* Network service layer that uses generic functions where you simply pass in the desired decodable type for your expected response object - no more need for functions for each and every endpoint request - only one will do the trick for them all!
+* Abstraction layers between every service we would like to unit test.
 
 ## Features
 * Filter cats by a tag that is loaded from the API
