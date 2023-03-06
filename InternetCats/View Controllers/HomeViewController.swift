@@ -48,7 +48,9 @@ extension HomeViewController {
                 switch(state) {
                 case .loading:
                     self.loadingView.isHidden = false
-                case .finishedLoadingSuccessfully:
+                case .finishedLoadingTags:
+                    self.configureTagPicker()
+                case .finishedLoadingCats:
                     self.loadingView.isHidden = true
                     self.collectionView.reloadData()
                 case .errorFetchingTags(let error):

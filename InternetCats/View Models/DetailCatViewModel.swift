@@ -19,12 +19,11 @@ class DetailCatViewModel {
             self.navigationTitle = "\(owner)'s Cat"
         }
         
-        var tagLabelText = ""
         for tag in self.cat.tags {
             if tag == self.cat.tags.first {
-                tagLabelText = "Tag list: \(tag)"
+                self.tagLabelText = "Tag list: \(tag)"
             } else {
-                tagLabelText = tagLabelText + ", \(tag)"
+                self.tagLabelText += ", \(tag)"
             }
         }
     }

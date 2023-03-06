@@ -12,7 +12,8 @@ class HomeViewModel {
     enum State {
         case idle
         case loading
-        case finishedLoadingSuccessfully
+        case finishedLoadingTags
+        case finishedLoadingCats
         case errorFetchingTags(Error)
         case errorFetchingCats(Error)
         
@@ -49,6 +50,7 @@ class HomeViewModel {
             switch result {
             case .success(let tags):
                 self?.tags = tags
+                self?.state = .finishedLoadingTags
                 self?.loadFirstPage()
             case .failure(let error):
                 self?.state = .errorFetchingTags(error)
@@ -66,7 +68,7 @@ class HomeViewModel {
             case .success(let cats):
                 self?.cats = cats
                 self?.canLoadMore = (cats.count == self?.limitCatsPerPage)
-                self?.state = .finishedLoadingSuccessfully
+                self?.state = .finishedLoadingCats
             case .failure(let error):
                 self?.state = .errorFetchingCats(error)
             }
@@ -89,7 +91,7 @@ class HomeViewModel {
                     self?.canLoadMore = false
                 }
                 
-                self?.state = .finishedLoadingSuccessfully
+                self?.state = .finishedLoadingCats
             case .failure(let error):
                 self?.canLoadMore = false
                 self?.state = .errorFetchingCats(error)
