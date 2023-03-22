@@ -11,19 +11,19 @@ class DetailCatViewModel {
     private(set) var cat: Cat
     private(set) var navigationTitle: String = "Cat"
     private(set) var tagLabelText: String = ""
-    
+
     init(cat: Cat) {
         self.cat = cat
-        
+
         if let owner = self.cat.owner, owner != "null" {
-            self.navigationTitle = "\(owner)'s Cat"
+            navigationTitle = "\(owner)'s Cat"
         }
-        
+
         for tag in self.cat.tags {
             if tag == self.cat.tags.first {
-                self.tagLabelText = "Tag list: \(tag)"
+                tagLabelText = "Tag list: \(tag)"
             } else {
-                self.tagLabelText += ", \(tag)"
+                tagLabelText += ", \(tag)"
             }
         }
     }

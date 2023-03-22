@@ -10,7 +10,7 @@ import UIKit
 
 struct LayoutSettings {
     static let spacing: CGFloat = 2
-    
+
     static var itemsPerRow: Int {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return 4

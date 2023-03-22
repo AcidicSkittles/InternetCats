@@ -5,27 +5,26 @@
 //  Created by Derek Buchanan on 12/18/22.
 //
 
-import UIKit
 import FLAnimatedImage
+import UIKit
 
 class CatCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var imageView: FLAnimatedImageView!
+    @IBOutlet var imageView: FLAnimatedImageView!
     var viewModel: CatCollectionViewModel!
-    
+
     func configure(withViewModel viewModel: CatCollectionViewModel) {
         self.viewModel = viewModel
-        
+
         if let url = viewModel.cat.imageURL {
-            self.imageView.loadImage(url: url)
+            imageView.loadImage(url: url)
         }
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        self.imageView.cancelImageLoading()
-        self.imageView.animatedImage = nil
-        self.imageView.image = nil
+
+        imageView.cancelImageLoading()
+        imageView.animatedImage = nil
+        imageView.image = nil
     }
 }

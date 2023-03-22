@@ -8,15 +8,15 @@
 import Foundation
 
 protocol NetworkServiceType: AnyObject {
-    func call<T:Codable>(endpoint: EndPointType, completion: @escaping (Result<T, Error>) -> Void)
+    func call<T: Codable>(endpoint: EndPointType, completion: @escaping (Result<T, Error>) -> Void)
 }
 
 protocol EndPointType {
     var baseURL: String { get }
     var path: String { get }
     var httpMethod: HTTPMethod { get }
-    var headers: [String : String]? { get }
-    var queryItems: [String : String]? { get }
+    var headers: [String: String]? { get }
+    var queryItems: [String: String]? { get }
     var body: Codable? { get }
 }
 

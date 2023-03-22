@@ -12,12 +12,12 @@ class ServiceContainer {
     static let shared = ServiceContainer()
 
     var catService: CatServiceType
-    
+
     init() {
         // Setup services
         let network: NetworkServiceType = NetworkService()
 
         // Inject our network behavior into our cat service
-        self.catService = CatService(network: network)
+        catService = CatService(network: network)
     }
 }

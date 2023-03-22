@@ -5,42 +5,41 @@
 //  Created by Derek Buchanan on 12/18/22.
 //
 
-import UIKit
 import FLAnimatedImage
+import UIKit
 
 public protocol LoadableView: AnyObject {
     var loadingView: LoadingView { get set }
 }
 
 public class LoadingView: UIView {
-    
-    @IBOutlet weak var imageViewContainer: UIView! {
+    @IBOutlet var imageViewContainer: UIView! {
         didSet {
-            self.imageViewContainer.clipsToBounds = true
-            self.imageViewContainer.layer.cornerRadius = 20
+            imageViewContainer.clipsToBounds = true
+            imageViewContainer.layer.cornerRadius = 20
         }
     }
-    
-    @IBOutlet weak var imageView: FLAnimatedImageView! {
+
+    @IBOutlet var imageView: FLAnimatedImageView! {
         didSet {
             let path = Bundle.main.url(forResource: "poptart_cat", withExtension: "gif")!
             let data = try! Data(contentsOf: path)
             self.imageView.animatedImage = FLAnimatedImage(gifData: data)
         }
     }
-    
-    public override var isHidden: Bool {
+
+    override public var isHidden: Bool {
         didSet {
-            self.superview?.bringSubviewToFront(self)
+            superview?.bringSubviewToFront(self)
         }
     }
 }
 
 extension LoadableView where Self: UIViewController {
     func setupLoadingView() {
-        self.loadingView.frame = self.view.bounds
-        self.loadingView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.loadingView.isHidden = true
-        self.view.addSubview(self.loadingView)
+        loadingView.frame = view.bounds
+        loadingView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        loadingView.isHidden = true
+        view.addSubview(loadingView)
     }
 }

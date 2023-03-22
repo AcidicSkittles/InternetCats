@@ -1,0 +1,3 @@
+--exclude Pods
+--stripunusedargs unnamed-only
+--patternlet inline

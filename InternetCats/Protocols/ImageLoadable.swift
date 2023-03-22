@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 protocol ImageLoadable: UIImageView {
-    
     func loadImage(url: URL)
-    
+
     func cancelImageLoading()
 }
