@@ -21,9 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialHomeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-
-        initialHomeVC.viewModel = HomeViewModel(catService: ServiceContainer.shared.catService)
+        let viewModel = HomeViewModel(catService: ServiceContainer.shared.catService)
+        let initialHomeVC = storyboard.instantiateViewController(identifier: "HomeViewController") { coder in
+            return HomeViewController(coder: coder, viewModel: viewModel)
+        }
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: initialHomeVC)

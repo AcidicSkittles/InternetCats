@@ -12,7 +12,17 @@ import UIKit
 class DetailCatViewController: UIViewController {
     @IBOutlet var imageView: FLAnimatedImageView!
     @IBOutlet var tagLabel: UILabel!
-    var viewModel: DetailCatViewModel!
+    private var viewModel: DetailCatViewModel!
+
+    init?(coder: NSCoder, viewModel: DetailCatViewModel) {
+        self.viewModel = viewModel
+        super.init(coder: coder)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

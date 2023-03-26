@@ -11,9 +11,19 @@ import UIKit
 class HomeViewController: UIViewController, LoadableView {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var tagTextField: UITextField!
-    var viewModel: HomeViewModel!
+    private var viewModel: HomeViewModel!
     var loadingView: LoadingView = UIView.fromNib()
     var cancellables = Set<AnyCancellable>()
+
+    init?(coder: NSCoder, viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(coder: coder)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,8 +120,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCat = viewModel.cats[indexPath.item]
-        let detailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DetailCatViewController") as! DetailCatViewController
-        detailViewController.viewModel = DetailCatViewModel(cat: selectedCat)
+        let viewModel = DetailCatViewModel(cat: selectedCat)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailViewController = storyboard.instantiateViewController(identifier: "DetailCatViewController") { coder in
+            return DetailCatViewController(coder: coder, viewModel: viewModel)
+        }
 
         let nav = UINavigationController(rootViewController: detailViewController)
         present(nav, animated: true)

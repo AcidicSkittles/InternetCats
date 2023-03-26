@@ -1,3 +1,4 @@
 --exclude Pods
 --stripunusedargs unnamed-only
 --patternlet inline
+--disable redundantReturn
